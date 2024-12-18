@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeismoShield - Earthquake Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to SeismoShield</h2>
+                <button class="close-button" onclick="closeLoginModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="login-type-selector">
+                <button class="login-type-btn" data-login-type="customer">
+                    <i class="fas fa-user"></i> Customer
+                </button>
+                <button class="login-type-btn" data-login-type="engineer">
+                    <i class="fas fa-hard-hat"></i> Engineer
+                </button>
+            </div>
+
+            <div class="login-form-container" data-login-type="">
+                <form id="login-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="login-submit-btn">Login</button>
+                    <div class="form-footer">
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="photos/Turquoise Earth Icon Environment Logo (1).png" alt="SeismoShield Logo">
+                </div>
+                <nav class="main-nav">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#technology">Technology</a>
+                    <a href="#contact">Contact</a>
+                    <button class="login-btn" onclick="showLoginModal()">Login</button>
+                </nav>
+                <div class="mobile-menu-icon">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Real-Time Earthquake Monitoring</h1>
+                        <p>Advanced seismic detection and structural health monitoring using cutting-edge sensor technology</p>
+                        <div class="hero-cta">
+                            <a href="#features" class="btn btn-primary">Learn More</a>
+                            <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="photos/blob-8a5d034.webp">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Our Key Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <img src="photos\real-time-data-concept-flat-icon-style-illustration_357500-1564.avif" alt="Real-Time Monitoring">
+                        <h3>Real-Time Monitoring</h3>
+                        <p>Instant detection and analysis of seismic activities</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="photos/images.jpg" alt="Structural Health">
+                        <h3>Structural Health</h3>
+                        <p>Comprehensive tracking of building integrity</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="photos\download.png" alt="Early Warning">
+                        <h3>Early Warning System</h3>
+                        <p>Proactive alerts before potential structural risks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="technology-section">
+            <div class="container">
+                <div class="technology-content">
+                    <div class="technology-text">
+                        <h2>Advanced Sensor Technology</h2>
+                        <p>Our BlueberryPi sensors provide ultra-precise seismic measurements with real-time data transmission and analysis</p>
+                        <ul>
+                            <li>High-precision accelerometers</li>
+                            <li>Low-latency data transmission</li>
+                            <li>Machine learning-powered analysis</li>
+                        </ul>
+                    </div>
+                    <div class="technology-image">
+                        <img src="photos/12343818.png" alt="BlueberryPi Sensor">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/seismoshield-logo-white.png" alt="SeismoShield Logo">
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="login-modal" class="modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Login to SeismoShield</h2>
+              <button class="close-button" onclick="closeLoginModal()">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          
+          <div class="login-type-selector">
+              <button class="login-type-btn" data-login-type="customer">
+                  <i class="fas fa-user"></i> Customer
+              </button>
+              <button class="login-type-btn" data-login-type="engineer">
+                  <i class="fas fa-hard-hat"></i> Engineer
+              </button>
+          </div>
+  
+          <div class="login-form-container">
+              <form id="login-form">
+                  <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" id="username" placeholder="Enter your username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" id="password" placeholder="Enter your password" required>
+                  </div>
+                  <button type="submit" class="login-submit-btn">Login</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+  <!-- Customer Dashboard -->
+  <div id="customer-dashboard" style="display:none;">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SeismoShield - Customer Dashboard</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.1/chart.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background-color: #f4f4f4;
+            }
+            .dashboard {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .card {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .vibration-scale {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+            }
+            .scale-segment {
+                flex-grow: 1;
+                padding: 10px;
+                text-align: center;
+                color: white;
+            }
+            .mild { background-color: #4CAF50; }
+            .moderate { background-color: #FFC107; }
+            .severe { background-color: #F44336; }
+            .crack-measurements {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            .crack-progression img {
+                max-width: 100%;
+                height: auto;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dashboard">
+            <div class="card">
+                <h2>Vibration Monitoring</h2>
+                <canvas id="vibrationChart"></canvas>
+                <div class="vibration-scale">
+                    <div class="scale-segment mild">Mild</div>
+                    <div class="scale-segment moderate">Moderate</div>
+                    <div class="scale-segment severe">Severe</div>
+                </div>
+            </div>
+    
+            <div class="card">
+                <h2>Crack Measurements</h2>
+                <div class="crack-measurements">
+                    <div>
+                        <strong>Width</strong>
+                        <p id="crack-width">0.5 mm</p>
+                    </div>
+                    <div>
+                        <strong>Depth</strong>
+                        <p id="crack-depth">2.3 mm</p>
+                    </div>
+                    <div>
+                        <strong>Height</strong>
+                        <p id="crack-height">15 mm</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="card crack-progression">
+                <h2>Crack Progression</h2>
+                <div id="crack-images">
+                    <img src="crack1.jpg" alt="Crack Progression 1">
+                    <img src="crack2.jpg" alt="Crack Progression 2">
+                    <img src="crack3.jpg" alt="Crack Progression 3">
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // Vibration Chart Setup
+            const ctx = document.getElementById('vibrationChart').getContext('2d');
+            const vibrationThreshold = 5; // Example threshold value
+    
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Vibration Intensity',
+                        data: [],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                thresholdLine: {
+                                    type: 'line',
+                                    yMin: vibrationThreshold,
+                                    yMax: vibrationThreshold,
+                                    borderColor: 'red',
+                                    borderWidth: 2,
+                                    label: {
+                                        content: 'Threshold',
+                                        display: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+    
+            // Simulate dynamic data
+            function updateVibrationData() {
+                const now = new Date();
+                const vibrationValue = Math.random() * 10;
+    
+                // Add new data point
+                chart.data.labels.push(now.toLocaleTimeString());
+                chart.data.datasets[0].data.push(vibrationValue);
+    
+                // Remove old data points if more than 20
+                if (chart.data.labels.length > 20) {
+                    chart.data.labels.shift();
+                    chart.data.datasets[0].data.shift();
+                }
+    
+                // Update chart
+                chart.update();
+    
+                // Check for threshold crossing
+                if (vibrationValue > vibrationThreshold) {
+                    triggerAlarm();
+                }
+            }
+    
+            function triggerAlarm() {
+                // Simulate physical buzzer (in real scenario, this would trigger actual hardware)
+                console.log('ALARM: Vibration Threshold Exceeded!');
+                alert('High Vibration Detected! Structural Risk Potential.');
+            }
+    
+            // Update data every second
+            setInterval(updateVibrationData, 1000);
+        </script>
+    </body>
+    </html>
+  
+  <!-- Engineer Dashboard -->
+  <div id="engineer-dashboard" style="display:none;">
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          background-color: #f4f4f4;
+      }
+      .dashboard {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+      }
+      .card {
+          background-color: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          padding: 20px;
+          margin-bottom: 20px;
+      }
+      .axis-data {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+          text-align: center;
+      }
+      .threshold-stats table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+      .threshold-stats th, .threshold-stats td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+      }
+      .crack-analysis img {
+          max-width: 100%;
+          height: auto;
+          margin: 5px;
+      }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+      <div class="card">
+          <h2>Sensor Axis Data</h2>
+          <div class="axis-data">
+              <div>
+                  <h3>X-Axis</h3>
+                  <p id="x-axis-value">0.0</p>
+              </div>
+              <div>
+                  <h3>Y-Axis</h3>
+                  <p id="y-axis-value">0.0</p>
+              </div>
+              <div>
+                  <h3>Z-Axis</h3>
+                  <p id="z-axis-value">0.0</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="card threshold-stats">
+          <h2>Threshold Crossings</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Timestamp</th>
+                      <th>Axis</th>
+                      <th>Value</th>
+                  </tr>
+              </thead>
+              <tbody id="threshold-log">
+                  <!-- Dynamically populated -->
+              </tbody>
+          </table>
+      </div>
+
+      <div class="card crack-analysis">
+          <h2>Crack Photo Analysis</h2>
+          <table>
+              <thead>
+                  <tr>
+                      <th>Image</th>
+                      <th>Width</th>
+                      <th>Depth</th>
+                      <th>Height</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td><img src="crack1.jpg" alt="Crack Analysis"></td>
+                      <td>0.5 mm</td>
+                      <td>2.3 mm</td>
+                      <td>15 mm</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+  <script>
+      // Simulate sensor data
+      function updateSensorData() {
+          const xValue = (Math.random() * 10).toFixed(2);
+          const yValue = (Math.random() * 10).toFixed(2);
+          const zValue = (Math.random() * 10).toFixed(2);
+
+          document.getElementById('x-axis-value').textContent = xValue;
+          document.getElementById('y-axis-value').textContent = yValue;
+          document.getElementById('z-axis-value').textContent = zValue;
+
+          // Check for threshold crossings
+          const threshold = 5;
+          const thresholdLog = document.getElementById('threshold-log');
+          
+          [
+              {axis: 'X', value: xValue},
+              {axis: 'Y', value: yValue},
+              {axis: 'Z', value: zValue}
+          ].forEach(data => {
+              if (data.value > threshold) {
+                  const row = thresholdLog.insertRow(0);
+                  row.insertCell(0).textContent = new Date().toLocaleString();
+                  row.insertCell(1).textContent = data.axis;
+                  row.insertCell(2).textContent = data.value;
+
+                  // Keep only last 5 entries
+                  if (thresholdLog.rows.length > 5) {
+                      thresholdLog.deleteRow(-1);
+                  }
+              }
+          });
+      }
+
+      // Update every second
+      setInterval(updateSensorData, 1000);
+  </script>
+  </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

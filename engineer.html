@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeismoShield - Engineer Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .axis-data {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+        .threshold-stats table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .threshold-stats th, .threshold-stats td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .crack-analysis img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="card">
+            <h2>Sensor Axis Data</h2>
+            <div class="axis-data">
+                <div>
+                    <h3>X-Axis</h3>
+                    <p id="x-axis-value">0.0</p>
+                </div>
+                <div>
+                    <h3>Y-Axis</h3>
+                    <p id="y-axis-value">0.0</p>
+                </div>
+                <div>
+                    <h3>Z-Axis</h3>
+                    <p id="z-axis-value">0.0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card threshold-stats">
+            <h2>Threshold Crossings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Axis</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody id="threshold-log">
+                    <!-- Dynamically populated -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card crack-analysis">
+            <h2>Crack Photo Analysis</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Width</th>
+                        <th>Depth</th>
+                        <th>Height</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="crack1.jpg" alt="Crack Analysis"></td>
+                        <td>0.5 mm</td>
+                        <td>2.3 mm</td>
+                        <td>15 mm</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Simulate sensor data
+        function updateSensorData() {
+            const xValue = (Math.random() * 10).toFixed(2);
+            const yValue = (Math.random() * 10).toFixed(2);
+            const zValue = (Math.random() * 10).toFixed(2);
+
+            document.getElementById('x-axis-value').textContent = xValue;
+            document.getElementById('y-axis-value').textContent = yValue;
+            document.getElementById('z-axis-value').textContent = zValue;
+
+            // Check for threshold crossings
+            const threshold = 5;
+            const thresholdLog = document.getElementById('threshold-log');
+            
+            [
+                {axis: 'X', value: xValue},
+                {axis: 'Y', value: yValue},
+                {axis: 'Z', value: zValue}
+            ].forEach(data => {
+                if (data.value > threshold) {
+                    const row = thresholdLog.insertRow(0);
+                    row.insertCell(0).textContent = new Date().toLocaleString();
+                    row.insertCell(1).textContent = data.axis;
+                    row.insertCell(2).textContent = data.value;
+
+                    // Keep only last 5 entries
+                    if (thresholdLog.rows.length > 5) {
+                        thresholdLog.deleteRow(-1);
+                    }
+                }
+            });
+        }
+
+        // Update every second
+        setInterval(updateSensorData, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeismoShield - Customer Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .vibration-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .scale-segment {
+            flex-grow: 1;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .mild { background-color: #4CAF50; }
+        .moderate { background-color: #FFC107; }
+        .severe { background-color: #F44336; }
+        .crack-measurements {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .crack-progression img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="card">
+            <h2>Vibration Monitoring</h2>
+            <canvas id="vibrationChart"></canvas>
+            <div class="vibration-scale">
+                <div class="scale-segment mild">Mild</div>
+                <div class="scale-segment moderate">Moderate</div>
+                <div class="scale-segment severe">Severe</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Crack Measurements</h2>
+            <div class="crack-measurements">
+                <div>
+                    <strong>Width</strong>
+                    <p id="crack-width">0.5 mm</p>
+                </div>
+                <div>
+                    <strong>Depth</strong>
+                    <p id="crack-depth">2.3 mm</p>
+                </div>
+                <div>
+                    <strong>Height</strong>
+                    <p id="crack-height">15 mm</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card crack-progression">
+            <h2>Crack Progression</h2>
+            <div id="crack-images">
+                <img src="crack1.jpg" alt="Crack Progression 1">
+                <img src="crack2.jpg" alt="Crack Progression 2">
+                <img src="crack3.jpg" alt="Crack Progression 3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Vibration Chart Setup
+        const ctx = document.getElementById('vibrationChart').getContext('2d');
+        const vibrationThreshold = 5; // Example threshold value
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Vibration Intensity',
+                    data: [],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    annotation: {
+                        annotations: {
+                            thresholdLine: {
+                                type: 'line',
+                                yMin: vibrationThreshold,
+                                yMax: vibrationThreshold,
+                                borderColor: 'red',
+                                borderWidth: 2,
+                                label: {
+                                    content: 'Threshold',
+                                    display: true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Simulate dynamic data
+        function updateVibrationData() {
+            const now = new Date();
+            const vibrationValue = Math.random() * 10;
+
+            // Add new data point
+            chart.data.labels.push(now.toLocaleTimeString());
+            chart.data.datasets[0].data.push(vibrationValue);
+
+            // Remove old data points if more than 20
+            if (chart.data.labels.length > 20) {
+                chart.data.labels.shift();
+                chart.data.datasets[0].data.shift();
+            }
+
+            // Update chart
+            chart.update();
+
+            // Check for threshold crossing
+            if (vibrationValue > vibrationThreshold) {
+                triggerAlarm();
+            }
+        }
+
+        function triggerAlarm() {
+            // Simulate physical buzzer (in real scenario, this would trigger actual hardware)
+            console.log('ALARM: Vibration Threshold Exceeded!');
+            alert('High Vibration Detected! Structural Risk Potential.');
+        }
+
+        // Update data every second
+        setInterval(updateVibrationData, 1000);
+    </script>
+</body>
+</html>
